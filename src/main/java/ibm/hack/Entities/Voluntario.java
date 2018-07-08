@@ -18,11 +18,15 @@ public class Voluntario {
     @Column(nullable = false)
     private String firstName;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @Column(nullable = false)
+    private String password;
+
+    @ManyToMany(cascade = {CascadeType.ALL},mappedBy="voluntarios")
     @JsonIgnore
-    @JoinTable(name="voluntario_beneficio",
-            joinColumns={@JoinColumn(name="voluntario_id")},
-            inverseJoinColumns={@JoinColumn(name="beneficio_id")})
+    private Set<Voluntariado> voluntariados;
+
+    @ManyToMany(cascade = {CascadeType.ALL},mappedBy="voluntarios1")
+    @JsonIgnore
     private Set<Beneficio> beneficios;
 
     public Voluntario() {
@@ -40,15 +44,17 @@ public class Voluntario {
         return firstName;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public Set<Beneficio> getBeneficios() {
-        return beneficios;
-    }
 
-    public void setBeneficios(Set<Beneficio> beneficios) {
-        this.beneficios = beneficios;
-    }
 }

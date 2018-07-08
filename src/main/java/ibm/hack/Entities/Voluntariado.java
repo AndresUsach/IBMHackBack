@@ -28,9 +28,12 @@ public class Voluntariado {
     @JsonIgnore
     private List<Beneficio> Beneficio;
 
-    @ManyToMany(cascade = {CascadeType.ALL},mappedBy="voluntariados")
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JsonIgnore
-    private Set<Beneficio> beneficios;
+    @JoinTable(name="voluntario_voluntariado",
+            joinColumns={@JoinColumn(name="voluntariado_id")},
+            inverseJoinColumns={@JoinColumn(name="voluntario_id")})
+    private Set<Voluntario> voluntarios;
 
     @Column(nullable = false)
     private Timestamp fechaDeInicio;
@@ -76,13 +79,6 @@ public class Voluntariado {
         Beneficio = beneficio;
     }
 
-    public Set<ibm.hack.Entities.Beneficio> getBeneficios() {
-        return beneficios;
-    }
-
-    public void setBeneficios(Set<ibm.hack.Entities.Beneficio> beneficios) {
-        this.beneficios = beneficios;
-    }
 
     public Timestamp getFechaDeInicio() {
         return fechaDeInicio;

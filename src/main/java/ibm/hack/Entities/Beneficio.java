@@ -25,14 +25,10 @@ public class Beneficio {
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JsonIgnore
-    @JoinTable(name="voluntariado_beneficio",
+    @JoinTable(name="voluntario_beneficio",
             joinColumns={@JoinColumn(name="beneficio_id")},
-            inverseJoinColumns={@JoinColumn(name="voluntariado_id")})
-    private Set<Voluntariado> voluntariados;
-
-    @ManyToMany(cascade = {CascadeType.ALL},mappedBy="beneficios")
-    @JsonIgnore
-    private Set<Voluntario> voluntarios;
+            inverseJoinColumns={@JoinColumn(name="voluntario_id")})
+    private Set<Voluntario> voluntarios1;
 
     @Column(nullable = false)
     private Timestamp fechaDeIngreso;
@@ -64,21 +60,6 @@ public class Beneficio {
         this.voluntariado = voluntariado;
     }
 
-    public Set<Voluntariado> getVoluntariados() {
-        return voluntariados;
-    }
-
-    public void setVoluntariados(Set<Voluntariado> voluntariados) {
-        this.voluntariados = voluntariados;
-    }
-
-    public Set<Voluntario> getVoluntarios() {
-        return voluntarios;
-    }
-
-    public void setVoluntarios(Set<Voluntario> voluntarios) {
-        this.voluntarios = voluntarios;
-    }
 
     public Timestamp getFechaDeIngreso() {
         return fechaDeIngreso;
