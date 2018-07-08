@@ -1,8 +1,10 @@
-package Entities;
+package ibm.hack.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="Comuna")
@@ -14,34 +16,29 @@ public class Comuna {
     private Long id;
 
     @Column(nullable = false)
-    private String firstName;
+    private String name;
 
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name="region_id")
     private Region region;
 
+
     public Long getId() {
         return id;
     }
+
 
     public void setId(Long id) {
         this.id = id;
     }
 
     public String getFirstName() {
-        return firstName;
+        return name;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.name = firstName;
     }
 
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
-    }
 }

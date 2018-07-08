@@ -1,18 +1,17 @@
-package Entities;
+package ibm.hack.Entities;
+
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="Beneficio")
-public class Beneficio {
+@Table(name="Voluntario")
+public class Voluntario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "beneficio_id")
+    @Column(name = "voluntario_id")
     private Long id;
 
     @Column(nullable = false)
     private String firstName;
-
-
 }

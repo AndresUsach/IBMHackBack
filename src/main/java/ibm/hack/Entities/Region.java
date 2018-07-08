@@ -1,4 +1,4 @@
-package Entities;
+package ibm.hack.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,7 +15,7 @@ public class Region {
     private Long id;
 
     @Column(nullable = false)
-    private String firstName;
+    private String name;
 
     @OneToMany(mappedBy="region")
     @JsonIgnore
@@ -30,18 +30,18 @@ public class Region {
     }
 
     public String getFirstName() {
-        return firstName;
+        return name;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.name = firstName;
     }
 
-    public List<Entities.Comuna> getComuna() {
+    public List<Comuna> getComuna() {
         return Comuna;
     }
 
-    public void setComuna(List<Entities.Comuna> comuna) {
+    public void setComuna(List<Comuna> comuna) {
         Comuna = comuna;
     }
 }
