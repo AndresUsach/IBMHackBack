@@ -44,4 +44,19 @@ public class Region {
     public void setComuna(List<Comuna> comuna) {
         Comuna = comuna;
     }
+
+    public Region() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+
 }
